@@ -23,7 +23,7 @@ fetch (`https://cors-anywhere.herokuapp.com/https://public-api.tracker.gg/v2/ape
     } 
 
 })
-.then(res => console.log(res.json()))
+.then(res => res.json())
 .then(data =>{
     console.log(data)
 })
@@ -37,7 +37,7 @@ fetch (`https://cors-anywhere.herokuapp.com/https://public-api.tracker.gg/v2/ape
     } 
 
 })
-.then(res => console.log(res.json()))
+.then(res => res.json())
 .then(data =>{
     console.log(data)
 })
