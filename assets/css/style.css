@@ -17,6 +17,13 @@
     min-height: 100vh;
     height: 100%;
   }
+  
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
  
   /* nav bar text */
   .level-item {
@@ -25,9 +32,10 @@
   }
 
   .container {
-    display: flex;
+    display: flex; 
     justify-content: center;
-    height: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
   /* Parent flipcard */
@@ -38,7 +46,6 @@
     border: 1px solid #f1f1f1;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
     display: flex;
-    flex-flow: row wrap;
     justify-content: space-between;
     margin: 10px;
 
@@ -82,7 +89,6 @@
   }
 
   footer {
-    position: fixed;
     bottom: 0px;
     text-align: center;
     background: #13293d;
