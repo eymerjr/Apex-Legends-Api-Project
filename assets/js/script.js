@@ -1,4 +1,4 @@
-var platform= 'origin';
+var platform= '5';
 var platformUserIdentifier= 'AmbitiouslyErik';
 
 fetch (`https://cors-anywhere.herokuapp.com/https://public-api.tracker.gg/v2/apex/standard/profile/${platform}/${platformUserIdentifier}`,
@@ -8,7 +8,16 @@ fetch (`https://cors-anywhere.herokuapp.com/https://public-api.tracker.gg/v2/ape
     } 
 
 })
-.then(res => console.log(res.json()))
+.then(res => res.json())
 .then(data =>{
     console.log(data)
 })
+
+// fetch(url).then(response => 
+//     response.json().then(data => ({
+//         data: data,
+//         status: response.status
+//     })
+// ).then(res => {
+//     console.log(res.status, res.data.title)
+// }));
