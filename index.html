@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apex legends Stats Tracker</title>
-    <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
@@ -18,7 +17,18 @@
             APEX Legends
         </p>
         <p class="level-item has-text-centered" id="searchBar">
-            <input class="input" type="text" placeholder="Find your username">
+            <input name="username" class="input" type="text" placeholder="Find your username" id= "platformUserIdentifier">
+        </p>
+        <p class="select is-primary">
+            <select id="platform" class="custom-select" placeholder= "Origin ID, Xbox Live gamertag, PSN ID, etc...">
+                <option selected>Origin ID, Xbox Live gamertag, PSN ID, etc...</option>
+                <option value="origin">Origin ID</option>
+                <option value="psn">PSN</option>
+                <option value="xbl">Xbox</option>
+            </select>
+        </p>
+        <p>
+            <button class="button is-primary" id="submit">Submit</button>
         </p>
     </nav>
 
@@ -31,7 +41,7 @@
                         <img src="https://zilliongamer.com/uploads/apex-legends-mobile/character/bangalore.jpg"
                             alt="Bangalore" style="width:300px;height:200px;">
                     </div>
-                    <div class="flip-card-back">
+                    <div class="flip-card-back" id= "result repos-container">
                         <h1>Bangalore</h1>
                         <p>Stats</p>
                         <p>Sweat Score</p>
@@ -44,7 +54,7 @@
                         <img src="https://zilliongamer.com/uploads/apex-legends-mobile/character/wraith.jpg"
                             alt="Wraith" style="width:300px;height:200px;">
                     </div>
-                    <div class="flip-card-back">
+                    <div class="flip-card-back" id= "result">
                         <h1>Wraith</h1>
                         <p>Stats</p>
                         <p>Sweat Score</p>
@@ -70,7 +80,7 @@
                         <img src="https://cdn.mos.cms.futurecdn.net/dsyFYx8kT5MJK5ETe9yRE9-1024-80.jpg.webp"
                             alt="Ash" style="width:300px;height:200px;">
                     </div>
-                    <div class="flip-card-back">
+                    <div class="flip-card-back" id= "result">
                         <h1>Ash</h1>
                         <p>Stats</p>
                         <p>Sweat Score</p>
