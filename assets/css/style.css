@@ -9,6 +9,29 @@
     padding: 10px;
   }
 
+  /* #submit {
+    display: inline-block;
+    padding: 10px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: rgb(52, 52, 158);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 9px #999;
+  }
+  
+  #submit:hover {background-color: #3e8e41}
+  
+  #submit:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  } */
+
   body {
     background-image: url("https://cdn.mos.cms.futurecdn.net/QxA3ty4hV8zPss4Pfvjf8G-1024-80.jpg.webp");
     background-repeat: none;
@@ -43,7 +66,7 @@
     width: 300px;
     height: 200px;
     border: 1px solid #f1f1f1;
-    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    perspective: 1000px; 
     display: flex;
     justify-content: space-between;
     margin: 10px;
