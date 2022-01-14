@@ -36,6 +36,10 @@
     flex-direction: row;
     flex-wrap: wrap;
   }
+  
+  img {
+    border-radius: 12%;
+  }
 
   /* Parent flipcard */
   .flip-card {
@@ -72,12 +76,15 @@
     height: 100%;
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden;
+    border-radius: 12%;
   }
   
   /* Style the front side (fallback if image is missing) */
   .flip-card-front {
     background-color: #bbb;
     color: black;
+    border-radius: 12%;
+
    
   }
   
@@ -110,16 +117,25 @@
   /* width */
 ::-webkit-scrollbar {
   width: 10px;
+  border-radius: 12%;
+  height: 0px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
+ margin-top: 15px;
+ margin-bottom: 15px;
+ border-radius: 20px;
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #888; 
+  border-radius: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+ 
 }
 
 /* Handle on hover */
