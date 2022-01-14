@@ -60,6 +60,16 @@ console.log(playerData)
         // console.log(statsArray[i].stats.damage.displayName)
             let aRank= !statsArray[i].stats.arenaRankScore ? "No Arena Rank Score": statsArray[i].stats.arenaRankScore.displayValue
             let dam= !statsArray[i].stats.damage ? "No damage": statsArray[i].stats.damage.displayValue
+            let kills= !statsArray[i].stats.kills ? "No kills": statsArray[i].stats.kills.displayValue
+            let level= !statsArray[i].stats.level ? "No level": statsArray[i].stats.level.displayValue
+            let rankScore= !statsArray[i].stats.rankScore ? "No rank": statsArray[i].stats.rankScore.displayValue
+            let season10Wins= !statsArray[i].stats.season10Wins ? "No wins": statsArray[i].stats.season10Wins.displayValue
+            let season10Kills= !statsArray[i].stats.season10Kills ? "No kills": statsArray[i].stats.season10Kills.displayValue
+            let season11Wins= !statsArray[i].stats.season11Wins ? "No wins": statsArray[i].stats.season11Wins.displayValue
+            let season11Kills= !statsArray[i].stats.season11Kills ? "No kills": statsArray[i].stats.season11Kills.displayValue
+            let winningKills= !statsArray[i].stats.winningKills ? "No kills": statsArray[i].stats.winningKills.displayValue
+
+
 
             console.log(!statsArray[i].stats.arenaRankScore ? "No Arena Rank Score": statsArray[i].stats.arenaRankScore.displayValue)
 
@@ -71,10 +81,17 @@ console.log(playerData)
                        alt="Bangalore" style="width:300px;height:200px;">
                </div>
                <div class="flip-card-back" id="Bangalore">
-                   <h1>Char: ${statsArray[i].metadata.name}</h1>
-                    <p>${aRank}</p>
-                    <p>${dam}</p>
-                   <p>Sweat Score</p>
+                   <h1>Character Name: ${statsArray[i].metadata.name}</h1>
+                    <p>Arena Rank Score: ${aRank}</p>
+                    <p>Damage: ${dam}</p>
+                    <p>Kills: ${kills}</p>
+                    <p>Level: ${level}</p>
+                    <p>Rank Score: ${rankScore}</p>
+                    <p>Season 10 Wins: ${season10Wins}</p>
+                    <p>Season 10 Kills: ${season10Kills}</p>
+                    <p>Season 11 Wins: ${season11Wins}</p>
+                    <p>Season 11 Kills: ${season11Kills}</p>
+                    <p>Winning Kills: ${winningKills}</p>
                </div>
            </div>`
          
