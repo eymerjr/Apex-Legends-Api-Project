@@ -9,12 +9,20 @@
     padding: 10px;
   }
 
+    /* nav bar text */
+    .level-item {
+      font-size: 30px;
+      justify-content: space-between;
+    }
+  
+
   body {
     background-image: url("https://cdn.mos.cms.futurecdn.net/QxA3ty4hV8zPss4Pfvjf8G-1024-80.jpg.webp");
     background-repeat: none;
     background-size: cover;
     min-height: 100vh;
     height: 100%;
+    margin: 0px;
   }
   
   main {
@@ -23,12 +31,19 @@
     align-items: center;
     height: auto;
   }
- 
-  /* nav bar text */
-  .level-item {
-    font-size: 30px;
-    justify-content: space-between;
+
+  section {
+    float: left;
   }
+
+  aside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    height: auto;
+  }
+ 
 
   .container {
     display: flex; 
@@ -41,12 +56,24 @@
     border-radius: 12%;
   }
 
+  img, iframe {
+    height: auto;
+    width: auto;
+    max-width: 100vh;
+  }
+
+  iframe {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  /* margin-top: 0px; */
+  top: 0;
+  }
+
   /* Parent flipcard */
   .flip-card {
     background-color: transparent;
     width: 300px;
     height: 200px;
-    /* border: 1px solid #f1f1f1; */
     perspective: 1000px; 
     display: flex;
     justify-content: space-between;

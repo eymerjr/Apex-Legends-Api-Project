@@ -19,7 +19,6 @@ var formSubmitHandler = function (event) {
     if (username) {
       getplatformUserIdentifier(username);
   
-    //   repoContainerEl.textContent = '';
       platformUserIdentifier.value = '';
     } else {
       alert('Please enter a valid username');
@@ -44,17 +43,15 @@ var formSubmitHandler = function (event) {
         renderStats(data)
     })
 
-    
+
 }
 
-  submitBtn.addEventListener('click', formSubmitHandler);
+submitBtn.addEventListener('click', formSubmitHandler);
 
 
 
 function renderStats(playerData) {
-console.log(playerData)
     var statsArray= playerData.data.segments
-    console.log(statsArray)
     
     // creates an object for all of the images so they can later be matched to the character names in the API data
     var img= {
@@ -101,8 +98,6 @@ console.log(playerData)
             let imgSrc= !img[name] ? "No Source Image": img[name] 
 
             // creates player cards using the data from the API
-            console.log(!statsArray[i].stats.arenaRankScore ? "No Arena Rank Score": statsArray[i].stats.arenaRankScore.displayValue)
-            console.log(statsArray[i].metadata.name)
             let playerDiv= document.createElement("div")
             playerDiv.classList.add("flip-card")
             playerDiv.innerHTML= `<div class="flip-card-inner">
@@ -129,11 +124,6 @@ console.log(playerData)
 
     }
 }
-
-
-
-
-
 
 
 
