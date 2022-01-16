@@ -32,16 +32,22 @@
     height: auto;
   }
 
-  section {
-    float: left;
-  }
-
-  aside {
+  .twitchLive {
     display: flex;
     justify-content: center;
     align-items: center;
     float: right;
     height: auto;
+  }
+
+  .bulma-overlay-mixin {
+    @include overlay(1.5rem);
+    background-color: rgb(202, 42, 42);
+    border-radius: 0.25em;
+    color: white;
+    opacity: 0.9;
+    padding: 1em;
+    border-radius: 12%;
   }
  
 
@@ -65,7 +71,6 @@
   iframe {
   position: -webkit-sticky; /* Safari */
   position: sticky;
-  /* margin-top: 0px; */
   top: 0;
   }
 
@@ -110,9 +115,7 @@
   .flip-card-front {
     background-color: #bbb;
     color: black;
-    border-radius: 12%;
-
-   
+    border-radius: 12%; 
   }
   
   /* Style the back side */

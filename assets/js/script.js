@@ -30,7 +30,7 @@ var formSubmitHandler = function (event) {
     var apiUrl = `https://cors-anywhere.herokuapp.com/https://public-api.tracker.gg/v2/apex/standard/profile/${user.platform}/${user.user}`
     
 
-
+    // this is the api for getting the user profile/creating stat cards
     fetch (apiUrl,
     {
         headers: { 
@@ -43,6 +43,11 @@ var formSubmitHandler = function (event) {
         renderStats(data)
     })
 
+
+    // this is where the api for the twitch livestream goes (fetch request)
+
+    // on the last promise make sure you create a function that targets the livestream url (ex: renderURL(data)) (after go to line 133)
+   
 
 }
 
@@ -125,5 +130,10 @@ function renderStats(playerData) {
     }
 }
 
-
+// this is where you can create your renderURL() function
+// make a conditional statement (ex: If the profile you're looking for is currently playing, then use the rendered twitch livestream url
+// else play the youtube link (link is currently in the html doc))
+// you will need to create a variable to store the url within the 'if, else' statement so that you can use a template literal 
+// to insert it into the src for the iframe video.
+ 
 
