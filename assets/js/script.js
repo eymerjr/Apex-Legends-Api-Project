@@ -19,7 +19,6 @@ var formSubmitHandler = function (event) {
     if (username) {
       getplatformUserIdentifier(username);
   
-    //   repoContainerEl.textContent = '';
       platformUserIdentifier.value = '';
     } else {
       alert('Please enter a valid username');
@@ -31,7 +30,7 @@ var formSubmitHandler = function (event) {
     var apiUrl = `https://cors-anywhere.herokuapp.com/https://public-api.tracker.gg/v2/apex/standard/profile/${user.platform}/${user.user}`
     
 
-
+    // this is the api for getting the user profile/creating stat cards
     fetch (apiUrl,
     {
         headers: { 
@@ -44,20 +43,49 @@ var formSubmitHandler = function (event) {
         renderStats(data)
     })
 
-    
+
+    // this is where the api for the twitch livestream goes (fetch request)
+
+    // on the last promise make sure you create a function that targets the livestream url (ex: renderURL(data)) (after go to line 133)
+   
+
 }
 
-  submitBtn.addEventListener('click', formSubmitHandler);
+submitBtn.addEventListener('click', formSubmitHandler);
 
 
 
 function renderStats(playerData) {
-console.log(playerData)
     var statsArray= playerData.data.segments
-    console.log(statsArray)
     
+    // creates an object for all of the images so they can later be matched to the character names in the API data
+    var img= {
+        lifetime: "https://www.dailyesports.gg/wp-content/uploads/2019/02/Apex-Legends-Reveal-5-Things-You-Could-Be-Doing-While-You-Wait-800x400.jpg",
+        seer: "https://assets2.rockpapershotgun.com/apex-seer.jpg/BROK/resize/1920x1920%3E/format/jpg/quality/80/apex-seer.jpg", 
+        lifeline: "https://zilliongamer.com/uploads/apex-legends-mobile/character/lifeline.jpg",
+        bloodhound: "https://zilliongamer.com/uploads/apex-legends-mobile/character/bloodhound.jpg",
+        fuse: "https://www.nme.com/wp-content/uploads/2021/01/apex-legends-fuse@2000x1270-696x442.jpg",
+        horizon: "https://assets2.rockpapershotgun.com/apex-legends-horizon.jpg/BROK/resize/880%3E/format/jpg/quality/80/apex-legends-horizon.jpg",
+        rampart: "https://cdn.mos.cms.futurecdn.net/KtuNMDP5YHSMUdQBKRuy2E-1024-80.jpg.webp",
+        mirage: "https://cdn.wccftech.com/wp-content/uploads/2020/08/WCCFapexlegends32.jpg",
+        wattson: "https://zilliongamer.com/uploads/apex-legends-mobile/character/wattson.jpg",
+        caustic: "https://zilliongamer.com/uploads/apex-legends-mobile/character/caustic.jpg",
+        crypto: "https://zilliongamer.com/uploads/apex-legends-mobile/character/crypto.jpg",
+        loba: "https://images2.minutemediacdn.com/image/upload/c_fill,w_1080,ar_16:9,f_auto,q_auto,g_auto/shape/cover/sport/dataimagejpegbase649j4AAQSkZJRgABAQAAAQABAAD2wBDAA-e0884e728f18bb8a6c5afd3bb7fce840.jpg",
+        pathfinder: "https://zilliongamer.com/uploads/apex-legends-mobile/character/pathfinder.jpg",
+        bangalore: "https://zilliongamer.com/uploads/apex-legends-mobile/character/bangalore.jpg",
+        wraith: "https://zilliongamer.com/uploads/apex-legends-mobile/character/wraith.jpg",
+        octane: "https://zilliongamer.com/uploads/apex-legends-mobile/character/octane.jpg",
+        ash: "https://cdn.mos.cms.futurecdn.net/dsyFYx8kT5MJK5ETe9yRE9-1024-80.jpg.webp",
+        revenant: "https://zilliongamer.com/uploads/apex-legends-mobile/character/revenant.jpg",
+        gibraltar: "https://zilliongamer.com/uploads/apex-legends-mobile/character/gibraltar.jpg",
+        valkyrie: "https://www.pcgamesn.com/wp-content/uploads/2021/05/apex-legends-valkyrie-character-guide-900x506.jpg", 
+    }
+    
+
     for (var i= 0; i < statsArray.length; i++) {
-        // console.log(statsArray[i].stats.damage.displayName)
+
+            // This allows the function to ignore a tag if it doesn't exist for a player. If the tag does exist, it will display the value for the stat
             let aRank= !statsArray[i].stats.arenaRankScore ? "No Arena Rank Score": statsArray[i].stats.arenaRankScore.displayValue
             let dam= !statsArray[i].stats.damage ? "No damage": statsArray[i].stats.damage.displayValue
             let kills= !statsArray[i].stats.kills ? "No kills": statsArray[i].stats.kills.displayValue
@@ -69,16 +97,18 @@ console.log(playerData)
             let season11Kills= !statsArray[i].stats.season11Kills ? "No kills": statsArray[i].stats.season11Kills.displayValue
             let winningKills= !statsArray[i].stats.winningKills ? "No kills": statsArray[i].stats.winningKills.displayValue
 
+            // Allows the function to search for the name of the character in the api so we can match it to a picture
+            let name= statsArray[i].metadata.name
+            name= name.toLowerCase().trim()
+            let imgSrc= !img[name] ? "No Source Image": img[name] 
 
-
-            console.log(!statsArray[i].stats.arenaRankScore ? "No Arena Rank Score": statsArray[i].stats.arenaRankScore.displayValue)
-
+            // creates player cards using the data from the API
             let playerDiv= document.createElement("div")
             playerDiv.classList.add("flip-card")
             playerDiv.innerHTML= `<div class="flip-card-inner">
                <div class="flip-card-front">
-                   <img src="https://zilliongamer.com/uploads/apex-legends-mobile/character/bangalore.jpg"
-                       alt="Bangalore" style="width:300px;height:200px;">
+               <img src=${imgSrc}
+               alt="No Image to Show" style="width:300px;height:200px;">
                </div>
                <div class="flip-card-back" id="Bangalore">
                    <h1>Character Name: ${statsArray[i].metadata.name}</h1>
@@ -94,20 +124,16 @@ console.log(playerData)
                     <p>Winning Kills: ${winningKills}</p>
                </div>
            </div>`
-         
+        //  creates a new card for every character
         document.querySelector(".playerCard").appendChild(playerDiv)
 
     }
 }
 
-const imageArray = ["https://assets2.rockpapershotgun.com/apex-seer.jpg/BROK/resize/1920x1920%3E/format/jpg/quality/80/apex-seer.jpg","https://cdn.mos.cms.futurecdn.net/KtuNMDP5YHSMUdQBKRuy2E-1024-80.jpg.webp", "https://cdn.wccftech.com/wp-content/uploads/2020/08/WCCFapexlegends32.jpg", "https://assets2.rockpapershotgun.com/apex-legends-horizon.jpg/BROK/resize/880%3E/format/jpg/quality/80/apex-legends-horizon.jpg", "https://www.nme.com/wp-content/uploads/2021/01/apex-legends-fuse@2000x1270-696x442.jpg", "https://zilliongamer.com/uploads/apex-legends-mobile/character/lifeline.jpg", "https://zilliongamer.com/uploads/apex-legends-mobile/character/wattson.jpg", "https://zilliongamer.com/uploads/apex-legends-mobile/character/caustic.jpg", "https://zilliongamer.com/uploads/apex-legends-mobile/character/gibraltar.jpg", "https://zilliongamer.com/uploads/apex-legends-mobile/character/crypto.jpg", "https://images2.minutemediacdn.com/image/upload/c_fill,w_1080,ar_16:9,f_auto,q_auto,g_auto/shape/cover/sport/dataimagejpegbase649j4AAQSkZJRgABAQAAAQABAAD2wBDAA-e0884e728f18bb8a6c5afd3bb7fce840.jpg", "https://zilliongamer.com/uploads/apex-legends-mobile/character/pathfinder.jpg", "https://zilliongamer.com/uploads/apex-legends-mobile/character/bloodhound.jpg", "https://zilliongamer.com/uploads/apex-legends-mobile/character/revenant.jpg", "https://cdn.mos.cms.futurecdn.net/dsyFYx8kT5MJK5ETe9yRE9-1024-80.jpg.webp", "https://zilliongamer.com/uploads/apex-legends-mobile/character/octane.jpg", "https://zilliongamer.com/uploads/apex-legends-mobile/character/wraith.jpg", "https://zilliongamer.com/uploads/apex-legends-mobile/character/bangalore.jpg"]
-
-
-
-// This needs to match the card name to populate the correct card
-
-// I can populate all stats with 'display name: display value'
-
-// make a sweat score based on the percentile in the stats
-
+// this is where you can create your renderURL() function
+// make a conditional statement (ex: If the profile you're looking for is currently playing, then use the rendered twitch livestream url
+// else play the youtube link (link is currently in the html doc))
+// you will need to create a variable to store the url within the 'if, else' statement so that you can use a template literal 
+// to insert it into the src for the iframe video.
+ 
 
