@@ -19,7 +19,6 @@ var formSubmitHandler = function (event) {
     if (username) {
       getplatformUserIdentifier(username);
   
-    //   repoContainerEl.textContent = '';
       platformUserIdentifier.value = '';
     } else {
       alert('Please enter a valid username');
@@ -31,7 +30,7 @@ var formSubmitHandler = function (event) {
     var apiUrl = `https://cors-anywhere.herokuapp.com/https://public-api.tracker.gg/v2/apex/standard/profile/${user.platform}/${user.user}`
     
 
-
+    // this is the api for getting the user profile/creating stat cards
     fetch (apiUrl,
     {
         headers: { 
@@ -44,17 +43,20 @@ var formSubmitHandler = function (event) {
         renderStats(data)
     })
 
-    
+
+    // this is where the api for the twitch livestream goes (fetch request)
+
+    // on the last promise make sure you create a function that targets the livestream url (ex: renderURL(data)) (after go to line 133)
+   
+
 }
 
-  submitBtn.addEventListener('click', formSubmitHandler);
+submitBtn.addEventListener('click', formSubmitHandler);
 
 
 
 function renderStats(playerData) {
-console.log(playerData)
     var statsArray= playerData.data.segments
-    console.log(statsArray)
     
     // creates an object for all of the images so they can later be matched to the character names in the API data
     var img= {
@@ -101,8 +103,6 @@ console.log(playerData)
             let imgSrc= !img[name] ? "No Source Image": img[name] 
 
             // creates player cards using the data from the API
-            console.log(!statsArray[i].stats.arenaRankScore ? "No Arena Rank Score": statsArray[i].stats.arenaRankScore.displayValue)
-            console.log(statsArray[i].metadata.name)
             let playerDiv= document.createElement("div")
             playerDiv.classList.add("flip-card")
             playerDiv.innerHTML= `<div class="flip-card-inner">
@@ -130,10 +130,10 @@ console.log(playerData)
     }
 }
 
-
-
-
-
-
-
+// this is where you can create your renderURL() function
+// make a conditional statement (ex: If the profile you're looking for is currently playing, then use the rendered twitch livestream url
+// else play the youtube link (link is currently in the html doc))
+// you will need to create a variable to store the url within the 'if, else' statement so that you can use a template literal 
+// to insert it into the src for the iframe video.
+ 
 
