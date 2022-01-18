@@ -56,6 +56,14 @@ submitBtn.addEventListener('click', formSubmitHandler);
 
 
 function renderStats(playerData) {
+    // empty div to avoid duplicates
+    document.querySelector(".playerCard").innerHTML="";
+    var youtubeDiv=document.createElement("div")
+    // get vid and place on page
+    youtubeDiv.innerHTML=`
+    <div id="video">
+    </div>`
+    loadVids();
     var statsArray= playerData.data.segments
     
     // creates an object for all of the images so they can later be matched to the character names in the API data
@@ -124,16 +132,38 @@ function renderStats(playerData) {
                     <p>Winning Kills: ${winningKills}</p>
                </div>
            </div>`
+        document.querySelector(".playerCard").prepend(youtubeDiv)
         //  creates a new card for every character
-        document.querySelector(".playerCard").appendChild(playerDiv)
-
+        document.querySelector(".playerCard").append(playerDiv)
     }
-}
+    
+};
 
-// this is where you can create your renderURL() function
-// make a conditional statement (ex: If the profile you're looking for is currently playing, then use the rendered twitch livestream url
-// else play the youtube link (link is currently in the html doc))
-// you will need to create a variable to store the url within the 'if, else' statement so that you can use a template literal 
-// to insert it into the src for the iframe video.
- 
 
+    var key = 'AIzaSyAvcQgISjQ1hRZdFN9ba25nSrSZ110uFHg';
+    var playlistId = 'PL2fnLUTsNyq7A335zB_RpOzu7hEUcSJbB';
+    var URL = 'https://www.googleapis.com/youtube/v3/playlistItems';
+
+
+    var options = {
+        part: 'snippet',
+        key: key,
+        maxResults: 20,
+        playlistId: playlistId
+    }
+
+    
+
+    function loadVids() {
+        $.getJSON(URL, options, function (data) {
+            console.log(data.items[0].snippet.resourceId.videoId)
+            var id = data.items[0].snippet.resourceId.videoId;
+            mainVid(id);
+        });
+    }
+
+    function mainVid(id) {
+        $('#video').html(`
+					 <iframe width="auto" height="auto" src="https://www.youtube.com/embed/tgGVzsU-XqE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				`);
+    }
