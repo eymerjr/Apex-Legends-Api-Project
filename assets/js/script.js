@@ -27,7 +27,7 @@ var formSubmitHandler = function (event) {
 
 //   gets user info
   var getplatformUserIdentifier = function (user) {
-    var apiUrl = `https://cors-anywhere.herokuapp.com/https://public-api.tracker.gg/v2/apex/standard/profile/${user.platform}/${user.user}`
+    var apiUrl = `https://floating-headland-95050.herokuapp.com/https://public-api.tracker.gg/v2/apex/standard/profile/${user.platform}/${user.user}`
     
 
     // this is the api for getting the user profile/creating stat cards
